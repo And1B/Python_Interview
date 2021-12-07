@@ -2,24 +2,31 @@ import random
 import os
 
 
+# reads a given text-file and saves every line into an array.
 def read_data(filename):
     with open(filename) as r:
         lines = r.read().splitlines()
     return lines
 
 
+# generates test_data
 def generate_data(filename):
-    fruitList = ["Apple", "Apples", "Nectarine", "Mango", "Mango's", "Coconut", "Coconuts", "Blueberry", "Blueberries",
-                 "Orange", "Oranges"]
+    # this list provides data for the test cases
+    fruit_list = ["Apple", "Apples", "Nectarine", "Mango", "Mango's", "Coconut", "Coconuts", "Blueberry", "Blueberries",
+                  "Orange", "Oranges"]
+    # removes text-file if it already exists
     if os.path.isfile(filename):
         os.remove(filename)
+
+    # Creates lines for a new textfile with random amount of data
     with open(filename, 'x') as w:
-        for i in range(len(fruitList) - random.randrange(1, 7, 1)):
-            random_number = random.randrange(0, len(fruitList), 1)
-            w.write(fruitList.pop(random_number))
+        for i in range(len(fruit_list) - random.randrange(1, 7, 1)):
+            random_number = random.randrange(0, len(fruit_list), 1)
+            w.write(fruit_list.pop(random_number))
             w.write('\n')
 
 
+# creates a dictionary out of the two lists
 def combine_lists(measured_list, specified_list):
     if len(measured_list) > len(specified_list):
         print('list 1 bigger than list 2')
@@ -32,6 +39,7 @@ def combine_lists(measured_list, specified_list):
     return merged_list
 
 
+# checks for differences in the two provided lists
 def check_differences(measured_list, specified_list):
     missing_measured = []
     missing_specified = []
@@ -41,8 +49,7 @@ def check_differences(measured_list, specified_list):
             missing_specified.append(element)
     for element in specified_list:
         if element not in measured_list:
-            print(element)
+            # print(element)
             missing_measured.append(element)
     print('Measured list is missing these elements from the specified list:', missing_measured)
     print('Measured list contains elements that are not included in the specified list:', missing_specified)
-    # return missing_measured, missing_specified

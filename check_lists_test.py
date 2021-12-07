@@ -1,4 +1,4 @@
-from Methods import generate_data, read_data, check_differences
+from Methods import generate_data, read_data
 import unittest
 import os.path
 
@@ -8,8 +8,6 @@ class Testing(unittest.TestCase):
     def setUp(self):
         generate_data('MeasuredList.txt')
         generate_data('SpecifiedList.txt')
-        #self.measured = read_data('MeasuredList.txt')
-        #self.specified = read_data('SpecifiedList.txt')
         self.filenameMeasured = 'MeasuredList.txt'
         self.filenameSpecified = 'SpecifiedList.txt'
 
