@@ -1,6 +1,9 @@
 import random
 import os
 
+SPECIFIEDFILE = 'SpecifiedList.txt'
+MEASUREDFILE = 'MeasuredList.txt'
+
 # reads a given text-file and saves every line into an array.
 def read_data(filename):
     with open(filename) as r:
